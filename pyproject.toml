@@ -1,16 +1,52 @@
-[project]
-name = "datawallet"
+# Основной блок конфигурации проекта для Poetry
+[tool.poetry]
+name = "transactions-analyzer"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "Galina Mordovina",email = "glukoloid@gmail.com"}
-]
+authors = ["Galina Mordovina <glukoloid@gmail.com>"]
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-]
+# packages = [] # { include = "src" }
+package-mode = false # Пробуем
 
+# Основные зависимости проекта
+[tool.poetry.dependencies]
+python = "^3.12"
+python-dotenv = "^1.1.1"
+requests = "^2.32.4"
+finnhub-python = "^2.4.24"
 
+# Зависимости для разработки (poetry install --with dev)
+pandas = "^2.3.1"
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+mypy = "^1.10.0"
+pytest = "^8.4.1"
+pytest-cov = "^6.2.1"
+
+# Билд-система (не менять)
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+# Настройки black
+[tool.black]
+line-length = 88                   # Длина строки (по умолчанию black)
+target-version = ["py312"]         # Целевая версия Python
+
+# Настройки isort
+[tool.isort]
+profile = "black"                  # Согласуем стиль с black
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
+known_first_party = ["src", "tests"]
+skip = ["venv", "__pycache__"]
+
+# Настройки mypy
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+strict = true
+exclude = ["venv", "__pycache__", ".git"]
