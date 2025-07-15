@@ -1,0 +1,29 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Виртуальное окружение
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+
+# Окружение
+.env
+
+# Кеши и отчёты
+.coverage
+htmlcov/
+.pytest_cache/
+.cache/
+
+# Временные файлы
+*.log
+*.tmp
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/
